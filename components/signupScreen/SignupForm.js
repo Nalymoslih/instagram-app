@@ -15,7 +15,7 @@ import {firebase} from '@react-native-firebase/installations';
 import firestore from '@react-native-firebase/firestore';
 
 const SignupForm = ({navigation}) => {
-  const db = firestore();
+  // const db = firestore();
 
   const SignupFormSchema = yup.object().shape({
     email: yup.string().email().required('An email is required'),

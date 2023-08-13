@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import {Button, Divider, Image} from 'react-native-elements';
 import {Formik} from 'formik';
 import validUrl from 'valid-url';
+import axios from 'axios';
 
 const placeholder_IMG =
   'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=';
@@ -13,16 +14,31 @@ const uploadPostSchema = Yup.object().shape({
   caption: Yup.string().max(2200, 'Caption has reached the character'),
 });
 const FormikPostUploaded = ({navigation}) => {
+  // ... other parts ...
   const [thumbnailUrl, setThumbnailUrl] = useState(placeholder_IMG);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+
   return (
     <Formik
       initialValues={{caption: '', imageUrl: ''}}
-      onSubmit={values => {
-        console.log(values);
-        console.log('Your post was submitted successfully 🥳');
-        navigation.goBack();
+      onSubmit={async values => {
+        try {
+          const response = await axios.post(
+            'http://localhost:3000/api/auth/addPost',
+            {
+              caption: values.caption,
+              imageUrl: values.imageUrl,
+            },
+          );
+
+          if (response.data && response.data.success) {
+            console.log('Your post was added successfully 🥳');
+            navigation.goBack();
+          } else {
+            console.log('Error adding post:', response.data.error);
+          }
+        } catch (error) {
+          console.error('There was an error adding the post:', error);
+        }
       }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}>
