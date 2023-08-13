@@ -5,22 +5,22 @@ import {Divider} from 'react-native-elements';
 const postFooterIcons = [
   {
     name: 'Like',
-    imageUrl:
+    image_url:
       'https://img.icons8.com/fluency-systems-regular/60/ffffff/like--v1.png',
-    likedImageUrl: 'https://img.icons8.com/ios-filled/50/fa314a/like--v1.png',
+    likedimage_url: 'https://img.icons8.com/ios-filled/50/fa314a/like--v1.png',
   },
   {
     name: 'Comment',
-    imageUrl:
+    image_url:
       'https://img.icons8.com/material-outlined/60/ffffff/speech-bubble--v1.png',
   },
   {
     name: 'Share',
-    imageUrl: 'https://img.icons8.com/material-outlined/60/ffffff/sent.png',
+    image_url: 'https://img.icons8.com/material-outlined/60/ffffff/sent.png',
   },
   {
     name: 'Save',
-    imageUrl:
+    image_url:
       'https://img.icons8.com/fluency-systems-regular/60/ffffff/bookmark-ribbon--v1.png',
   },
 ];
@@ -53,7 +53,7 @@ const PostHeader = ({post}) => (
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
       <Image source={{uri: post.profile_picture}} style={styles.story} />
       <Text style={{color: 'white', fontWeight: 700, marginLeft: 5}}>
-        {post.user}
+        {post.id}
       </Text>
     </View>
     <Text style={{color: 'white', fontWeight: 900}}>...</Text>
@@ -62,7 +62,7 @@ const PostHeader = ({post}) => (
 const PostImage = ({post}) => (
   <View style={{width: '100%', height: 450}}>
     <Image
-      source={{uri: post.imageUrl}}
+      source={{uri: post.image_url}}
       style={{resizeMode: 'cover', height: '100%'}}
     />
   </View>
@@ -71,15 +71,24 @@ const PostImage = ({post}) => (
 const PostFooter = () => (
   <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
     <View style={styles.leftFooterIconsContainer}>
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[0].imageUrl} />
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[1].imageUrl} />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[0].image_url}
+      />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[1].image_url}
+      />
       <Icon
         imgStyle={[styles.footerIcon, styles.shareIcon]}
-        imgUrl={postFooterIcons[2].imageUrl}
+        imgUrl={postFooterIcons[2].image_url}
       />
     </View>
     <View style={{flex: 1, alignItems: 'flex-end'}}>
-      <Icon imgStyle={styles.footerIcon} imgUrl={postFooterIcons[3].imageUrl} />
+      <Icon
+        imgStyle={styles.footerIcon}
+        imgUrl={postFooterIcons[3].image_url}
+      />
     </View>
   </View>
 );
@@ -91,31 +100,31 @@ const Icon = ({imgStyle, imgUrl}) => (
 const Likes = ({post}) => (
   <View style={{flexDirection: 'row', marginTop: 4}}>
     <Text style={{color: 'white', fontWeight: 600}}>
-      {post.likes.toLocaleString('en')} likes
+      {post?.likes?.toLocaleString('en')} likes
     </Text>
   </View>
 );
 const Caption = ({post}) => (
   <View style={{marginTop: 5}}>
     <Text style={{color: 'white'}}>
-      <Text style={{fontWeight: '700'}}>{post.user}</Text>
-      <Text>{post.caption}</Text>
+      <Text style={{fontWeight: '700'}}>{post?.user}</Text>
+      <Text>{post?.caption}</Text>
     </Text>
   </View>
 );
 const CommentsSecotion = ({post}) => (
   <View style={{marginTop: 5}}>
-    {!!post.comments.length && (
+    {!!post?.comments?.length && (
       <Text style={{color: 'gray'}}>
-        View {post.comments.length > 1 ? 'all' : ''} {post.comments.length}{' '}
-        {post.comments.length > 1 ? 'comments' : 'comment'}
+        View {post?.comment?.length > 1 ? 'all' : ''} {post?.comments?.length}{' '}
+        {post?.comments?.length > 1 ? 'comments' : 'comment'}
       </Text>
     )}
   </View>
 );
 const Comments = ({post}) => (
   <>
-    {post.comments.map((comment, index) => (
+    {post?.comments?.map((comment, index) => (
       <View key={index} style={{flexDirection: 'row', marginTop: 5}}>
         <Text style={{color: 'white'}}>
           <Text style={{fontWeight: '700'}}>{comment.user}</Text>
