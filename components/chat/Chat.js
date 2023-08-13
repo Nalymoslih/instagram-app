@@ -39,7 +39,7 @@ const Chat = () => {
         user: {
           _id: data.sender_id,
           name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+          avatar: 'https://pbs.twimg.com/media/FADhDRwXoAA8Rbc.jpg',
         },
       };
       setMessages(previousMessages =>

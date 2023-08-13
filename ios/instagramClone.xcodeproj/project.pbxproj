@@ -518,7 +518,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.instgramClone;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.instgramCloneeee;
 				PRODUCT_NAME = instagramClone;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -546,7 +546,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.instgramClone;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.instgramCloneeee;
 				PRODUCT_NAME = instagramClone;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
